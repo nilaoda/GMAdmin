@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="layui/css/admin.css" media="all">
+    <link rel="stylesheet" href="layui/myicon/iconfont.css" type="text/css">
+    <title>游戏后台管理系统</title>
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+</head>
+
+<body onload="load();">
+    <ul class="layui-nav layui-nav-tree layui-nav-side" style="background-color:#20222A" lay-filter="demo">
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;"><i class="layui-icon layui-icon-user" style="padding: 6px"></i>账号相关<span
+                    class="layui-nav-more"></span></a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:goto('userlist')" id="child_userlist">账号总表</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;"><i class="iconfont icon-jiaose" style="padding: 6px"></i>角色相关<span
+                    class="layui-nav-more"></span></a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:goto('rolelist')" id="child_rolelist">角色总表</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;"><i class="iconfont icon-wupinguanli" style="padding: 6px"
+                    id="item_goods"></i>物品相关</a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:goto('goodslist')" id="child_goodslist">物品总表</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;"><i class="iconfont icon-dongwuyuan" style="padding: 6px"></i>怪物相关<span
+                    class="layui-nav-more"></span></a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:goto('monsterlist')" id="child_monsterlist">怪物总表</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="DoLogout"><i class="layui-icon layui-icon-close"
+                    style="padding: 6px"></i>退出登录<span></span></a>
+        </li>
+    </ul>
+
+
+    <!-- 主体内容 -->
+    <div class="layui-body" id="LAY_app_body">
+        <div class="layadmin-tabsbody-item layui-show" id="LAY_IFRAME">
+            <iframe src="msg.html" id="main_iframe" frameborder="0" class="layadmin-iframe"></iframe>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

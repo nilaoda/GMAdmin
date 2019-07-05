@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <script src="js/monsterlist.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <table id="demo" lay-filter="test"></table>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script type="text/html" id="barHead">
+        <a class="layui-btn layui-btn-primary layui-btn-sm" lay-event="add">
+            <i class="layui-icon layui-icon-add-1"></i>添加怪物</a>
+    </script>
+    <!-- 以下是隐藏的表单容器 -->
+    <form id="noDisplayFormAdd" class="layui-form layui-form-pane" action="" style="display:none;" lay-filter="addMonsterForm" id="addMonsterForm">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">怪物名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" required lay-verify="required" placeholder="请输入怪物名称"
+                            autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" pane="">
+                    <label class="layui-form-label">怪物种类</label>
+                    <div class="layui-input-block" id="type_dom">
+                    </div>
+                </div>
+                <div class="layui-form-item" pane="">
+                    <label class="layui-form-label">怪物属性</label>
+                    <div class="layui-input-block" id="attr_dom">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">力</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="power" required lay-verify="required|number" placeholder="请输入力"
+                            autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">速</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="speed" required lay-verify="required|number" placeholder="请输入速"
+                            autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">魔</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="magic" required lay-verify="required|number" placeholder="请输入魔"
+                            autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+        layui.use(['element'], function () {
+            var $ = layui.jquery;
+
+            //通过接口填充DOM结构
+            $.ajax({
+                url: 'api/GetAllMonsterType',
+                type: 'GET',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    data.data.forEach(element => {
+                        $("#type_dom").append("<input type='radio' name='_type' value='"
+                            + element.id + "'  title='" + element.name + "' checked>");
+                    });
+                },
+                error: function (data) {
+                    layer.msg("获取怪物种类失败", { time: 3000 });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        layui.use(['element'], function () {
+            var $ = layui.jquery;
+
+            //通过接口填充DOM结构
+            $.ajax({
+                url: 'api/GetAllMonsterAttr',
+                type: 'GET',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    data.data.forEach(element => {
+                        $("#attr_dom").append("<input type='radio' name='_attr' value='"
+                            + element.id + "'  title='" + element.name + "' checked>");
+                    });
+                },
+                error: function (data) {
+                    layer.msg("获取角色失败", { time: 3000 });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

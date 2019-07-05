@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <script src="js/rolelist.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="layui-form" lay-filter="searchForm">
+        <div class="layui-inline" style="margin: 10px 10px 10px 0px">
+            <div class="layui-input-inline">
+                <label style="color:#333; margin-left:20px">搜索功能：</label>
+            </div>
+            <div class="layui-input-inline" style="width: 120px;">
+                <input style="height:30px;" id="rolename" placeholder="输入角色名" autocomplete="off" class="layui-input" />
+            </div>
+            <div class="layui-input-inline" style="width: 120px;">
+                <input style="height:30px;" id="career" placeholder="输入职业(精确)" autocomplete="off" class="layui-input" />
+            </div>
+            <div class="layui-input-inline">
+                <label style="color:#333;">充值金额：</label>
+            </div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input style="height:30px;" id="min_money" placeholder="最小" autocomplete="off" class="layui-input" />
+            </div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input style="height:30px;" id="max_money" placeholder="最大" autocomplete="off" class="layui-input" />
+            </div>
+
+            <div class="layui-input-inline">
+                <label style="color:#333;">游戏币数额：</label>
+            </div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input style="height:30px;" id="min_gamecoin" placeholder="最小" autocomplete="off" class="layui-input" />
+            </div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input style="height:30px;" id="max_gamecoin" placeholder="最大" autocomplete="off" class="layui-input" />
+            </div>
+            <div class="layui-input-inline">
+                <label style="color:#333;">连续签到：</label>
+            </div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input style="height:30px;" id="min_daycontinuous" placeholder="最小" autocomplete="off"
+                    class="layui-input" />
+            </div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input style="height:30px;" id="max_daycontinuous" placeholder="最大" autocomplete="off"
+                    class="layui-input" />
+            </div>
+            <div class="layui-input-inline">
+                <label style="color:#333;">累计签到：</label>
+            </div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input style="height:30px;" id="min_daytotal" placeholder="最小" autocomplete="off" class="layui-input" />
+            </div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input style="height:30px;" id="max_daytotal" placeholder="最大" autocomplete="off" class="layui-input" />
+            </div>
+            <div class="layui-input-inline">
+                <button lay-submit lay-filter="searchBtn" style="height:30px;" type="button"
+                    class="layui-btn layui-btn-sm layui-btn-normal">
+                    <i class="layui-icon layui-icon-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <table id="demo" lay-filter="test"></table>
+    <script type="text/html" id="barRole">
+        <a class="layui-btn layui-btn-xs" lay-event="show">查看背包</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    </script>
+    <script type="text/html" id="barHead">
+        <label style="color:#333;">角色列表</label>
+    </script>
+
+    <!-- 以下是隐藏的表单容器 -->
+    <div id="noDisplayFormAddRole" style="display:none;">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <form class="layui-form layui-form-pane" lay-filter="addStuForm" id="addStuForm">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">角色名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="_name" required lay-verify="required" placeholder="请输入角色名"
+                                autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">职业</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="_career" value="战" title="战">
+                            <input type="radio" name="_career" value="法" title="法">
+                            <input type="radio" name="_career" value="刺" title="刺">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--物品表格-->
+    <div id="noDisplayTable2" style="display:none;">
+        <table class="layui-hide" id="goodsTable" lay-filter="goodsTable"></table>
+    </div>
+</body>
+
+</html>

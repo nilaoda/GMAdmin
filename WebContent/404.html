@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>页面找不到啦</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <script src="layui/layui.js"></script>
+    <script>
+        function jumpToMain() {
+            window.location = '/GMAdmin/main.html';
+        }
+        
+        function showMsg() {
+            layui.use(['layer'], function () {
+                var layer = layui.layer;
+	            layer.msg('对不起，你的页面已经丢啦~将为你跳转回主页面', {
+	                offset: '15px'
+	                , icon: 5
+	            });
+            });
+            setTimeout("jumpToMain()", 2000);
+        }
+    </script>
+</head>
+<body onload="showMsg()">
+
+</body>
+</html>
